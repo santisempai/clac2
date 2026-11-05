@@ -2,9 +2,9 @@ name: validacion pagina
 
 on: 
   push:
-    branches: [santiago]
+    branches: [santiago,main]
   pull_request:
-    branches: [santiago]
+    branches: [santiago,main]
 
 jobs:
   validacion:
@@ -18,4 +18,11 @@ jobs:
       - name: instalar node
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: '24'
+
+      - name: validar codigo HTML
+        run: |
+          echo "inicio"
+          npx html-validate "**/*.html"
+          echo "fin"'
+    
